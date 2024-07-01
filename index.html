@@ -1,0 +1,10 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Interactive White Globe</title> <style> body \{ margin: 0; \} #globeViz \{ width: 100%; height: 70vh; \} #images \{ text-align: center; padding: 20px; \} img \{ max-width: 200px; margin: 10px; \} </style> </head> <body> <div id="globeViz"></div> <div id="images"></div> <script src="https://unpkg.com/three/build/three.min.js"></script> <script src="https://unpkg.com/globe.gl"></script> <script> const globeElement = document.getElementById('globeViz'); const globe = Globe() .globeImageUrl('//unpkg.com/three-globe/example/img/earth-white.jpg') .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png') (globeElement); // Example data for locations const places = [ \{ lat: 41.9028, lng: 12.4964, name: "Italy", images: ["https://path-to-your-images/italy1.jpg", "https://path-to-your-images/italy2.jpg"] \}, \{ lat: 37.7749, lng: -122.4194, name: "San Francisco", images: ["https://path-to-your-images/sf1.jpg", "https://path-to-your-images/sf2.jpg"] \} ]; globe .pointsData(places) .pointAltitude(0.05) .pointColor(() => 'red') .onPointClick((\{ name, images \}) => \{ const imagesContainer = document.getElementById('images'); imagesContainer.innerHTML = `<h2>$\{name\}</h2>`; images.forEach(src => \{ const img = document.createElement('img'); img.src = src; imagesContainer.appendChild(img); \}); \}); // Set background color globeElement.style.backgroundColor = 'white'; </script> </body> </html>}
